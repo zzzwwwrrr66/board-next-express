@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import {useState, useEffect} from 'react';
 import { useForm } from "react-hook-form";
-import API from '../../utils/api';
 import useApi from '../_hooks/useApis';
 import Follow from './follow';
 import { Label } from './style';
