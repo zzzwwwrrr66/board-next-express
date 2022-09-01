@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import { useForm } from "react-hook-form";
-import Post from '../post/index';
 import Nav from '../nav';
 import Footer from '../footer';
 const loginApi = 'http://localhost:8080/user/login';
