@@ -1,4 +1,5 @@
 import axios from 'axios';
+export const backUrl = process.env.NODE_ENV === 'production' ? 'http://api.nodebird.com' : 'http://localhost:8080';
 
 const API = axios.create({
 	BASE_URL: 'http://localhost:8080',
@@ -9,3 +10,4 @@ const API = axios.create({
 });
 
 export default API;
+

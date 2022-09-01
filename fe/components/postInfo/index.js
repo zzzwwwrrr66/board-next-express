@@ -10,8 +10,6 @@ import Comment from './comment/index';
 import Image from './image';
 import PostContent from './postCotent';
 
-
-
 export default function PostInfo ({postId}) {
   const router = useRouter();
   const { data: postInfo, error, isValidating, mutate } = useApi.postInfo(postId);
