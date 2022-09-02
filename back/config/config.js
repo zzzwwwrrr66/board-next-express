@@ -7,7 +7,7 @@ module.exports = {
     "database": "node_express_react_by_wooram_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false,
+    "operatorsAliases": 0,
   },
   "test": {
     "username": "root",
@@ -15,7 +15,7 @@ module.exports = {
     "database": "node_express_react_by_wooram_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "operatorsAliases": 0
   },
   "production": {
     "username": "root",
@@ -23,6 +23,6 @@ module.exports = {
     "database": "node_express_react_by_wooram_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "operatorsAliases": 0
   }
 }
