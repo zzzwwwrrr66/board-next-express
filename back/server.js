@@ -10,12 +10,14 @@ const passport = require('passport');
 const passportConfig = require('./passport/config');
 const morgan = require('morgan');
 const path = require('path');
-
+const hpp = require('hpp');
 
 // routes S 
 const userRouter = require('./routes/user');
 const postRouter = require('./routes/post');
 const searchRouter = require('./routes/search');
+const helmet = require('helmet');
+
 // routes E 
 
 const app = express();
@@ -23,12 +25,20 @@ db.sequelize.sync({force: false})
 .then(()=>{log('DB 연결')})
 .catch((err)=>{console.error(`데이터 베이스 에러`,err)});
 
-app.use(morgan('dev'))
+if(process.env.NODE_ENV === 'production') {
+  app.use(morgan('combined'));
+  app.use(hpp());
+  app.use(helmet());
+} else {
+  app.use(morgan('dev'));
+}
+
+
 // cors S 
 app.use(cors({
   // http://localhost:5500/node_express_react_by_wooram/front/,
   // origin: 'http://localhost:5500/',
-  origin: 'http://localhost:3060',
+  origin: ['http://localhost:3060', 'nodebird.com', 'wooramBoard.com'],
   credentials: true,
 }));
 // static S
@@ -78,11 +88,7 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-// liten
-app.listen(app.get('port'), () => {
-  console.log(app.get('port'), '번 포트에서 대기중');
-});
 
-app.listen(8080, ()=>{
-  log('server on 8080')  
-})
+app.listen(process.env.NODE_ENV === 'production' ? 80 : 8080, ()=>{
+  log('server on ' + process.env.NODE_ENV === 'production' ? '80' : '8080');
+});
