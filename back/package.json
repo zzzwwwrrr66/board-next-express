@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "cross-env NODE_ENV=production pm2 start server.js",
-    "test": "cross-env NODE_ENV=production node app.js"
+    "test": "cross-env NODE_ENV=production node server.js"
   },
   "author": "",
   "license": "ISC",
