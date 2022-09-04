@@ -9,7 +9,7 @@ const { isLoggedIn, isNotLoggedIn} = require('../routes/middlewares')
 
 
 // login 유지 
-router.get('/', isLoggedIn, async (req, res, next) => { // GET /user
+router.get('/', async (req, res, next) => { // GET /user
   try {
     if (req.user) {
       const fullUserWithoutPassword = await User.findOne({
