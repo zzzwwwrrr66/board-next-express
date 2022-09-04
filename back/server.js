@@ -39,7 +39,7 @@ if(process.env.NODE_ENV === 'production') {
 app.use(cors({
   // http://localhost:5500/node_express_react_by_wooram/front/,
   // origin: 'http://localhost:5500/',
-  origin: ['http://localhost:3060', 'nodebird.com', 'wooramBoard.com', 'http://13.231.118.218'],
+  origin: ['http://localhost:3060', 'nodebird.com', 'http://13.231.118.218'],
   credentials: true,
 }));
 // static S 
@@ -56,6 +56,11 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    domain: process.env.NODE_ENV === 'production' && 'http://13.231.118.218'
+  },
 }));
 app.use(passport.initialize());
 app.use(passport.session());
