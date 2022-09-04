@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { backUrl } from '../../utils/api';
 import log from '../../utils/consoleLog';
 import useApi from '../_hooks/useApis';
 import {CommentInfoWrap} from './styles'
@@ -10,7 +11,7 @@ export default function Comment ({postId}) {
 
   const onSubmit = data => {
     if(data.content.trim()) {
-      axios.post('http://localhost:8080/post/'+postId+'/comment', {content: data.content,postId}, { withCredentials: true })  
+      axios.post(backUrl+'/post/'+postId+'/comment', {content: data.content,postId}, { withCredentials: true })  
       .then(res=>{
         log(res.data);
         mutate();

@@ -2,9 +2,10 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import {useState, useEffect} from 'react';
 import { useForm } from "react-hook-form";
+import { backUrl } from '../../utils/api';
 import useApi from '../_hooks/useApis';
 
-const loginApi = 'http://localhost:8080/user/login';
+const loginApi = backUrl+'/user/login';
 
 
 export default function Login() {

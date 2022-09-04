@@ -2,13 +2,14 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import {useState, useEffect} from 'react';
 import { useForm } from "react-hook-form";
+import { backUrl } from '../../utils/api';
 import useApi from '../_hooks/useApis';
 import Follow from './follow';
 import { Label } from './style';
 
 
-const logOutApi = 'http://localhost:8080/user/logout';
-const userUpdateApi = 'http://localhost:8080/user/update/';
+const logOutApi = backUrl+'/user/logout';
+const userUpdateApi = backUrl+'/user/update/';
 
 export default function Profile() {
   const router = useRouter();

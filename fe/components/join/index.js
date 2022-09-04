@@ -2,7 +2,8 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import { useRouter } from 'next/router'
 import { useForm } from "react-hook-form";
-const isUserLoggedInApi = 'http://localhost:8080/user';
+import { backUrl } from '../../utils/api';
+const isUserLoggedInApi = backUrl+'/user';
 
 export default function Join() {
   const router = useRouter()
@@ -26,7 +27,7 @@ export default function Join() {
         password: data.password,
         nickname: data.nickname
       };
-      axios.post('http://localhost:8080/user/join', data)
+      axios.post(backUrl+'/user/join', data)
       .then(res=>{
         alert(res.data);
         router.push('/');

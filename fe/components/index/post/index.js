@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useForm } from "react-hook-form";
 import useApi from '../../_hooks/useApis';
-import API from '../../../utils/api';
+import API, { backUrl } from '../../../utils/api';
 import { AddFileLabel } from './style';
 
 
@@ -72,7 +72,7 @@ export default function Post({page}) {
         imgsUrl.length > 0 && 
         imgsUrl.map((imgUrl, i)=>(
           <span key={i} >
-          <img src={`http://localhost:8080/${imgUrl}`} alt={imgUrl} width="100"/>
+          <img src={`${backUrl}/${imgUrl}`} alt={imgUrl} width="100"/>
           <button onClick={onRemoveImage(i)}>delete</button>
           </span>
         ))
