@@ -51,7 +51,7 @@ app.use(express.urlencoded({extended: true}));
 // login(passport)
 
 // session & cookie
-app.use(cookieParser(process.env.COOKIE_SECRET), );
+app.use(cookieParser(process.env.COOKIE_SECRET), { sameSite: "none", secure: true });
 app.use(session({
   saveUninitialized: false,
   resave: false,
