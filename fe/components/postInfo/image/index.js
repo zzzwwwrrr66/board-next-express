@@ -1,5 +1,5 @@
 import React from 'react';
-import { backUrl } from '../../../utils/api';
+import { backUrl } from '../../../utils/api__.js';
 import {ImgWrap} from './styles';
 
 export default function Image ({imgInfo}) {

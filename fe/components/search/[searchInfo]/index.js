@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import PostList from '../../postList';
 import useApi from '../../_hooks/useApis';
-// import API from '../../utils/api';
+// import API from '../../utils/api__.js';
 // import Link from 'next/link';
 
 export default function SearchInfo ({searchInfo}) {

@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import useApi from '../_hooks/useApis';
 import { useRouter } from 'next/router';
 import { PostInfoWrap } from './styles';
-import API from '../../utils/api';
+import API from '../../utils/api__.js';
 import Link from 'next/link';
 import { CommonLink } from '../../styles/styles';
 import Comment from './comment/index';

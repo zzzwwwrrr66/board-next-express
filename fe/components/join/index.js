@@ -2,7 +2,7 @@ import axios from 'axios';
 import {useState, useEffect} from 'react';
 import { useRouter } from 'next/router'
 import { useForm } from "react-hook-form";
-import { backUrl } from '../../utils/api';
+import { backUrl } from '../../utils/api__.js';
 const isUserLoggedInApi = backUrl+'/user';
 
 export default function Join() {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import { backUrl } from '../../utils/api';
+import { backUrl } from '../../utils/api__.js';
 import log from '../../utils/consoleLog';
 import useApi from '../_hooks/useApis';
 import {CommentInfoWrap} from './styles'

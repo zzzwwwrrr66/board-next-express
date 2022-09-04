@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import { useForm } from "react-hook-form";
 import useApi from '../../_hooks/useApis';
-import API, { backUrl } from '../../../utils/api';
+import API, { backUrl } from '../../../utils/api__.js';
 import { AddFileLabel } from './style';
 
 
