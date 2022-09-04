@@ -42,7 +42,7 @@ app.use(cors({
   origin: ['http://localhost:3060', 'nodebird.com', 'wooramBoard.com', 'http://13.231.118.218'],
   credentials: true,
 }));
-// static S
+// static S 
 app.use('/', express.static(path.join(__dirname, 'images')));
 // req.body 사용 S
 app.use(express.json());
