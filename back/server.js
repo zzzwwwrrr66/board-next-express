@@ -24,6 +24,7 @@ const app = express();
 db.sequelize.sync({force: false})
 .then(()=>{log('DB 연결')})
 .catch((err)=>{console.error(`데이터 베이스 에러`,err)});
+passportConfig();
 
 if(process.env.NODE_ENV === 'production') {
   app.use(morgan('combined'));
@@ -48,7 +49,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // login(passport)
-passportConfig();
+
 // session & cookie
 app.use(cookieParser(process.env.COOKIE_SECRET), );
 app.use(session({
