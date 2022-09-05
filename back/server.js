@@ -39,7 +39,8 @@ if(process.env.NODE_ENV === 'production') {
 app.use(cors({
   // http://localhost:5500/node_express_react_by_wooram/front/,
   // origin: 'http://localhost:5500/',
-  origin: ['http://localhost:3060', 'nodebird.com', 'http://13.231.118.218'],
+  // origin: ['http://localhost:3060', 'nodebird.com', 'http://13.231.118.218'],
+  origin: true,
   credentials: true,
 }));
 // static S 
