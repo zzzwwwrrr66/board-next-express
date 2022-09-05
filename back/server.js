@@ -60,7 +60,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: false,
-    domain: process.env.NODE_ENV === 'production' && 'http://13.231.118.218'
+    // domain: process.env.NODE_ENV === 'production' && 'http://13.231.118.218'
   },
 }));
 app.use(passport.initialize());
