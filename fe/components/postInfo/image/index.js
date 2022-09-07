@@ -8,7 +8,7 @@ export default function Image ({imgInfo}) {
     <ImgWrap>
     {imgInfo?.map(img => 
       <div key={img.id}>
-      <p><img width="100" src={`${backUrl}/${img.src}`} alt={img.src} ></img></p>
+      <p><img width="100" src={`${img}`} alt={img} ></img></p>
       </div>
     )}
     </ImgWrap>

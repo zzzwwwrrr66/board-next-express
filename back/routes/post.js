@@ -6,6 +6,8 @@ const router = express.Router();
 const { User, Post, Comment, Image, Hashtag } = require('../models/index');
 const { isLoggedIn, isNotLoggedIn} = require('../routes/middlewares');
 const fs = require('fs');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
 
 // make folder
 try {
@@ -14,7 +16,23 @@ try {
   console.log('uploads 폴더가 없으므로 생성합니다.');
   fs.mkdirSync('images');
 }
+AWS.config.update({
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-1',
+});
+const upload = multer({
+  storage: multerS3({
+    s3: new AWS.S3(),
+    bucket: 'wooram-board-fe-be',
+    key(req, file, cb) {
+      cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`)
+    }
+  }),
+  limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
+});
 
+/* local
 const upload = multer({
   storage: multer.diskStorage({
     destination(req, file, done) {
@@ -28,6 +46,7 @@ const upload = multer({
   }),
   limits: { fileSize: 20 * 1024 * 1024 }, // 20MB
 });
+*/
 
 router.post('/', isLoggedIn, upload.none(), async (req, res, next)=>{ // add one post
   try{
@@ -65,14 +84,18 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next)=>{ // add one
 });
 
 
-router.post('/images', isLoggedIn, upload.array('image'), (req, res, next)=> {
-  try {
-    res.json(req.files.map((v) => v.filename));
-  } catch(err){
-    console.error(err);
-    next(err);
-  }
-})
+// router.post('/images', isLoggedIn, upload.array('image'), (req, res, next)=> {
+//   try {
+//     res.json(req.files.map((v) => v.filename));
+//   } catch(err){
+//     console.error(err);
+//     next(err);
+//   }
+// });
+router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => { // POST /post/images
+  console.log(req.files);
+  res.json(req.files.map((v) => v.location.replace(/\/original\//, '/thumb/')));
+});
 
 router.get('/list', async (req,res,next)=>{ // get post list
   try{

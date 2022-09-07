@@ -72,7 +72,7 @@ export default function Post({page}) {
         imgsUrl.length > 0 && 
         imgsUrl.map((imgUrl, i)=>(
           <span key={i} >
-          <img src={`${backUrl}/${imgUrl}`} alt={imgUrl} width="100"/>
+          <img src={`${imgUrl}`} alt={imgUrl} width="100"/>
           <button onClick={onRemoveImage(i)}>delete</button>
           </span>
         ))
