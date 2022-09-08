@@ -94,7 +94,8 @@ router.post('/', isLoggedIn, upload.none(), async (req, res, next)=>{ // add one
 // });
 router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => { // POST /post/images
   console.log(req.files);
-  res.json(req.files.map((v) => v.location.replace(/\/original\//, '/thumb/')));
+  // res.json(req.files.map((v) => v.location.replace(/\/original\//, '/thumb/'))); // lamda 설정후 사용 가능
+  res.json(req.files.map((v) => v.location));
 });
 
 router.get('/list', async (req,res,next)=>{ // get post list
