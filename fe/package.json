@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next -p 3060",
     "build": "cross-env ANALYZE=true NODE_ENV=production next build",
-    "start": "cross-env NODE_ENV=production next start -p 443"
+    "start": "cross-env NODE_ENV=production next start -p 443",
+    "startAtFirst": "sudo npx pm2 start npm -- start",
+    "reloadStart" : "sudo npm run build && sudo npx pm2 reload all"
   },
   "author": "wooram",
   "license": "ISC",

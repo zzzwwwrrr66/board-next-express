@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon server",
     "start": "cross-env NODE_ENV=production pm2 start server.js",
-    "test": "cross-env NODE_ENV=production node server.js"
+    "test": "cross-env NODE_ENV=production node server.js",
+    "reloadStart" : "sudo npx pm2 reload all"
   },
   "author": "",
   "license": "ISC",
